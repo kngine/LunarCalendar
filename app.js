@@ -6,7 +6,7 @@
   const NOTES_KEY = 'lunar-calendar-notes';
   const DISPLAY_OPTIONS_KEY = 'lunar-calendar-display';
 
-  var displayOptions = { lunar: true, usHolidays: true, weekNum: true, jieQi: false, lunarFestivals: true };
+  var displayOptions = { lunar: true, usHolidays: true, weekNum: false, jieQi: false, lunarFestivals: true };
 
   function getDisplayOptions() {
     try {
