@@ -1,0 +1,20 @@
+{
+  "name": "万年历 Perpetual Calendar",
+  "short_name": "万年历",
+  "description": "Perpetual calendar with 农历, US holidays, notes, 节气, 农历节日",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0f0e14",
+  "background_color": "#0f0e14",
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -211,7 +211,7 @@ body {
 }
 
 .cell {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 3;
   min-height: 0;
   height: 100%;
   padding: 6px 8px;
