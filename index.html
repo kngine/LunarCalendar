@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>万年历 · Perpetual Calendar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1 class="title">万年历</h1>
+      <div class="controls">
+        <button type="button" class="btn btn-prev" id="prevMonth" aria-label="Previous month">‹</button>
+        <div class="month-year">
+          <select id="monthSelect" aria-label="Month"></select>
+          <select id="yearSelect" aria-label="Year"></select>
+        </div>
+        <button type="button" class="btn btn-next" id="nextMonth" aria-label="Next month">›</button>
+        <button type="button" class="btn btn-today" id="goToday">Today</button>
+        <button type="button" class="btn btn-settings" id="toggleSettings" aria-label="Display options">显示选项</button>
+      </div>
+      <div class="settings-panel" id="settingsPanel" aria-hidden="true">
+        <label class="setting-item"><input type="checkbox" id="optLunar" checked> 农历</label>
+        <label class="setting-item"><input type="checkbox" id="optUSHolidays" checked> US 节日</label>
+        <label class="setting-item"><input type="checkbox" id="optWeekNum" checked> 周数</label>
+        <label class="setting-item"><input type="checkbox" id="optJieQi"> 节气</label>
+        <label class="setting-item"><input type="checkbox" id="optLunarFestivals" checked> 农历节日</label>
+      </div>
+    </header>
+
+    <main class="calendar-wrap">
+      <div class="weekdays" id="weekdaysRow">
+        <span class="weekday-week"></span>
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="grid" id="calendarGrid"></div>
+    </main>
+
+    <footer class="footer">
+      <div class="legend">
+        <span class="legend-item"><span class="dot holiday"></span> US 节日</span>
+        <span class="legend-item"><span class="dot today"></span> Today</span>
+        <span class="legend-item"><span class="dot note"></span> Note</span>
+        <span class="legend-item"><span class="dot jieqi"></span> 节气</span>
+        <span class="legend-item"><span class="dot lunar-festival"></span> 农历节日</span>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal-overlay" id="noteModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-labelledby="noteModalTitle">
+      <h2 class="modal-title" id="noteModalTitle">Note</h2>
+      <p class="modal-date" id="noteModalDate"></p>
+      <textarea class="modal-textarea" id="noteModalText" rows="4" placeholder="Add a note for this date..."></textarea>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-save" id="noteModalSave">Save</button>
+        <button type="button" class="btn btn-clear" id="noteModalClear">Clear</button>
+        <button type="button" class="btn btn-cancel" id="noteModalClose">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunar-javascript/1.7.4/lunar.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
