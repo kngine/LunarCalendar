@@ -66,6 +66,17 @@ body {
   flex-wrap: wrap;
 }
 
+.controls-break {
+  flex-basis: 100%;
+  height: 0;
+  order: 0;
+}
+
+.controls .btn-today,
+.controls .btn-settings {
+  order: 1;
+}
+
 .btn {
   background: var(--surface2);
   color: var(--text);
