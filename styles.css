@@ -200,7 +200,9 @@ body {
 }
 
 .cell {
-  min-height: 88px;
+  aspect-ratio: 1;
+  min-height: 0;
+  height: 100%;
   padding: 6px 8px;
   background: var(--surface2);
   border: 1px solid var(--border);
@@ -208,7 +210,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
   transition: background 0.15s;
+  overflow: hidden;
 }
 
 .cell:hover {
@@ -234,14 +238,26 @@ body {
   font-weight: 600;
   font-size: 1rem;
   margin-bottom: 2px;
+  flex-shrink: 0;
 }
 
 .cell .lunar {
   font-family: var(--font-serif);
   font-size: 0.75rem;
   color: var(--lunar);
-  flex: 1;
+  flex-shrink: 0;
   min-height: 1.2em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cell .lunar,
+.cell .holiday-name,
+.cell .cell-jieqi,
+.cell .cell-lunar-festival,
+.cell .cell-note {
+  flex-shrink: 0;
 }
 
 .cell .holiday-name {
@@ -438,29 +454,131 @@ body {
   margin-left: auto;
 }
 
+/* iPhone and small mobile */
 @media (max-width: 640px) {
   .app {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .header {
+    margin-bottom: 1.25rem;
   }
 
   .title {
-    font-size: 1.9rem;
+    font-size: 1.75rem;
   }
 
-  .cell {
-    min-height: 72px;
-    padding: 4px 6px;
+  .controls {
+    gap: 0.5rem;
   }
 
-  .cell .lunar {
+  .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+
+  .btn-prev,
+  .btn-next {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .month-year select {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+
+  .calendar-wrap {
+    padding: 0.75rem;
+    border-radius: 10px;
+  }
+
+  .weekdays {
+    gap: 2px;
+    margin-bottom: 4px;
+  }
+
+  .weekdays span {
     font-size: 0.65rem;
   }
 
-  .cell .holiday-name {
+  .grid {
+    gap: 2px;
+  }
+
+  .cell {
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+
+  .cell .day-num {
+    font-size: 0.9rem;
+  }
+
+  .cell .lunar {
+    font-size: 0.6rem;
+  }
+
+  .cell .holiday-name,
+  .cell .cell-jieqi,
+  .cell .cell-lunar-festival {
     font-size: 0.55rem;
   }
 
   .cell .cell-note {
+    font-size: 0.55rem;
+  }
+
+  .week-num {
     font-size: 0.6rem;
+  }
+
+  .footer {
+    margin-top: 1rem;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .legend {
+    gap: 0.75rem;
+    font-size: 0.75rem;
+  }
+
+  .modal-overlay {
+    padding: 0.5rem;
+    align-items: flex-end;
+  }
+
+  .modal {
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 12px 12px 0 0;
+  }
+}
+
+/* Very narrow (e.g. iPhone SE) */
+@media (max-width: 380px) {
+  .app {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .cell .day-num {
+    font-size: 0.8rem;
+  }
+
+  .cell .lunar,
+  .cell .holiday-name,
+  .cell .cell-jieqi,
+  .cell .cell-lunar-festival,
+  .cell .cell-note {
+    font-size: 0.5rem;
   }
 }
